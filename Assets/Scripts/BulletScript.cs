@@ -5,18 +5,14 @@ public class BulletScript : MonoBehaviour {
 
     float speed = 15f;
     float timeToLive = 4f;
-    float timer;
 
 	// Use this for initialization
 	void Start () {
-        timer = timeToLive;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        // Bullet destruction timer tick
-        timer -= Time.deltaTime;
 
         //Bullet movement
         Vector3 newPosition = transform.position;
@@ -25,11 +21,7 @@ public class BulletScript : MonoBehaviour {
 
         // Bullet live time
         // destroy bullet to prevent memory leak
-        if(timer <= 0)
-        {
-            Destroy(gameObject);
-            timer = timeToLive;
-        }
+        Destroy(gameObject, timeToLive);            
 
     }
 }
